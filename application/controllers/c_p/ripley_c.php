@@ -1,15 +1,9 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of ripley
  *
- * @author Desarrollo
+ * @author Desarrollo Benjamin Sanchez Cardenas
  */
 class Ripley_c extends CI_Controller{
      var $ruta="//199.69.69.93\interfaces_cedentes\Cargas Procesos\APLICACIONES\RP9_CARSIT/entrada/solvencia.csv";
