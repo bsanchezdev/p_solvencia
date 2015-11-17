@@ -1,0 +1,13 @@
+INSERT INTO ASI_CLIENTES SELECT distinct
+if
+(
+    SUBSTR( ASI_ORIGINAL_CLIENTES.Rut_Cliente , 1	, 1 ) < 1
+    , SUBSTR( ASI_ORIGINAL_CLIENTES.Rut_Cliente , 2	, 7 )
+    , SUBSTR( ASI_ORIGINAL_CLIENTES.Rut_Cliente , 1	, 8 )
+) AS Rut_Cliente,
+	RIGHT 
+        (
+	ASI_ORIGINAL_CLIENTES.Rut_Cliente , 1
+	) AS DV ,
+	ASI_ORIGINAL_CLIENTES.Nombre_Cliente
+FROM ASI_ORIGINAL_CLIENTES 

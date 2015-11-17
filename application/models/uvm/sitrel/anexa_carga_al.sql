@@ -1,0 +1,41 @@
+INSERT ignore INTO CARGA (
+	RUT,
+	DV,
+	NOMBRE,
+	OPERACION,
+	CUOTA,
+	PRODUCTO,
+	VENCE,
+        MONTO,
+	TIPO_DEUDOR,
+	MARCA,
+	PAGADO
+) SELECT distinct
+	deuda.RUT_ALUMNO, deuda.DIGITO_VERIFICADOR_ALUMNO, deuda.NOMBRE_ALUMNO, concat("00" , LEFT (
+		deuda.NUMERO_OPERACION, (
+			InStr(
+				deuda.NUMERO_OPERACION, "-"
+			)
+		) - 1
+	) )AS Expr1,
+	deuda.NUMERO_DE_CUOTA, "PAGARE" AS Expr4,
+	deuda.FECHA_VENCIMIENTO_CUOTA, deuda.MONTO_DETALLE / 100 AS Expr2,
+	2 AS Expr3,
+	"" AS Expr8,
+	"NO" AS Expr5
+FROM
+	deuda
+INNER JOIN VENCIMIENTO_MAS_ANTIGUO_MOROSO ON deuda.RUT_ALUMNO= VENCIMIENTO_MAS_ANTIGUO_MOROSO.RUT
+WHERE
+	(
+		(
+			(deuda.NOMBRE_PRODUCTO) = "PAGARE COBRANZA"
+			OR (deuda.NOMBRE_PRODUCTO) = "PAGARE COPAGO"
+			OR (deuda.NOMBRE_PRODUCTO) = "PAGARE OTROS"
+		)
+		AND (
+			(deuda.ROL) IS NULL
+			OR (deuda.ROL) = ""
+			OR (deuda.ROL) = " "
+		)
+	);
