@@ -39,6 +39,7 @@ and open the template in the editor.
                 
                 <div class="col-lg-12 contenedor-datos-ajax">
                    <!-- <div class="progr" style="height: 20px; width:100px"></div>-->
+                  
                 </div>
             </div>
         </div>
@@ -58,13 +59,15 @@ and open the template in the editor.
         <script>
             $("#paso1").on("click",function(e)
         {
-            
+            $(".contenedor-datos-ajax").prepend('<div class="progr" style="height: 20px; width:100px"></div>');
+        $(".progr" ).html('<img src="<?=base_url('/imagenes/6C59C7124.gif');?>" width="100%"/>' );
             $.ajax({
   type: "POST",
   url: "<?= base_url("c_p/ripley_c/modal_periodo");?>/",
   data: "",
   success: function(data){
       $("#carbdd").toggleClass("hidden");
+      $(".progr" ).empty();$(".progr" ).remove();
       $( ".contenedor-datos-ajax" ).append( data );
   },
   error: function(XMLHttpRequest, textStatus, errorThrown) {

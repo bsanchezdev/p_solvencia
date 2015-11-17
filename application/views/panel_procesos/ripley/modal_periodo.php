@@ -44,7 +44,7 @@
     
     $("#continuar").on("click",function()
     {
-        
+        $(".progr" ).empty();$(".progr" ).remove();
        if($(".periodo").val().trim()!==""&&$(".fcarga").val().trim()!=="")
        {
 $('#myModal').modal('hide');
