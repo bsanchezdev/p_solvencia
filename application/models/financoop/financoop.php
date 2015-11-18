@@ -412,6 +412,11 @@ $this->traer_fic_marca();
    
     protected function traer_fic_marca()
     {
+         $this->db_operaciones->truncate('FIC_MARCA');
+        $this->set_marcas=load_query_file
+     ( $this->model_path.'/financoop/fic_marcas/set_marcas.sql')     ;
+        $this->db_operaciones->query($this->set_marcas);
+        /*
         $set_marcas=  'DROP TABLE OPERACIONES.DBO.FIC_MARCA
 SELECT Operacion,Linea_de_Negocio,Producto
 INTO	OPERACIONES.DBO.FIC_MARCA
@@ -419,7 +424,7 @@ FROM CEDENTES.DBO.FINANCOOP_DEUDA
 WHERE FECHA_CARGA=(SELECT MAX(FECHA_CARGA) FROM CEDENTES.DBO.FINANCOOP_DEUDA)
 GROUP BY Operacion,Linea_de_Negocio,Producto';
         $this->db_operaciones->query($set_marcas);
-        
+        */
         
         
         $fic_marca='select * from OPERACIONES.DBO.FIC_MARCA';
