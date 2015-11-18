@@ -15,9 +15,9 @@ class Santander_c extends CI_Controller{
    var $ruta_cbdd_bn1       =   "//199.69.69.93\interfaces_cedentes\Cargas Procesos\APLICACIONES\SANT_TERR_CARSIT\BN1\CARBDD.txt";
    var $ruta_direccion_bn1  =   "//199.69.69.93\interfaces_cedentes\Cargas Procesos\APLICACIONES\SANT_TERR_CARSIT\BN1\CARDIR.txt";
    var $ruta_telefonos_bn1  =   "//199.69.69.93\interfaces_cedentes\Cargas Procesos\APLICACIONES\SANT_TERR_CARSIT\BN1\TMOVIL.txt";
-   var $copia_ruta_cbdd_bn1       =   "//199.69.69.93\interfaces_cedentes\Cargas Procesos\APLICACIONES\SANT_TERR_CARSIT\BN1\CARBDD.CSV";
-   var $copia_ruta_direccion_bn1  =   "//199.69.69.93\interfaces_cedentes\Cargas Procesos\APLICACIONES\SANT_TERR_CARSIT\BN1\CARDIR.CSV";
-   var $copia_ruta_telefonos_bn1  =   "//199.69.69.93\interfaces_cedentes\Cargas Procesos\APLICACIONES\SANT_TERR_CARSIT\BN1\TMOVIL.CSV";
+   //var $copia_ruta_cbdd_bn1       =   "//199.69.69.93\interfaces_cedentes\Cargas Procesos\APLICACIONES\SANT_TERR_CARSIT\BN1\CARBDD.CSV";
+   //var $copia_ruta_direccion_bn1  =   "//199.69.69.93\interfaces_cedentes\Cargas Procesos\APLICACIONES\SANT_TERR_CARSIT\BN1\CARDIR.CSV";
+   //var $copia_ruta_telefonos_bn1  =   "//199.69.69.93\interfaces_cedentes\Cargas Procesos\APLICACIONES\SANT_TERR_CARSIT\BN1\TMOVIL.CSV";
    
    
    

@@ -10,11 +10,11 @@ class Ripley_c extends CI_Controller{
    
     public function __construct() {
         parent::__construct();
-        $this->load->model("ripley/ripley");
-         $this->load->model("ripley/csvdata")       ;
-                 $this->load->helper("caracteres");
-                 $this->load->helper("file");
-                 $this->load->helper("sql_construct");
+        $this->load->model("ripley/ripley")             ;
+         $this->load->model("ripley/csvdata")           ;
+                 $this->load->helper("caracteres")      ;
+                 $this->load->helper("file")            ;
+                 $this->load->helper("sql_construct")   ;
     }
     
     public function index() {
