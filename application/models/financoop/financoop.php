@@ -473,7 +473,7 @@ FROM marca_salida");
 $data=$query->result_array() ;
 
 $r=generateCsv($data);
-if ( ! write_file($this->ruta."\\marca_salida.txt", $r))
+if ( ! write_file($this->ruta."\\marca_salida.csv", $r))
 {
      echo '<p><div class="label label-danger">Error al crear Marca Salida</div>';
 }
