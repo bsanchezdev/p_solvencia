@@ -7,20 +7,17 @@
  */
 
 /**
- * Description of curso
+ * Description of landing_1
  *
  * @author Desarrollo
  */
-class Panel extends CI_Controller {
-
+class Landing extends CI_Controller {
+    
     public function __construct() {
         parent::__construct();
     }
     
-    public function index($param=null)
-    {
-        $data   =   null;
-      $this->load->view("landing",$data);
+    public function index() {
+         $this->load->view("landing");
     }
-    
 }
