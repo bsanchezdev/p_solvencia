@@ -15,9 +15,10 @@ class Movistar extends CI_Controller {
    var $config_ftp=array();
    var $rar_path='C:\"Archivos de programa"\WinRAR\Rar.exe x -o+ "';
     public function __construct() {
-        parent::__construct()       ;
-        $this->load->library('ftp') ;
-        $this->load->helper('path') ;  
+        parent::__construct()               ;
+        $this->load->library('ftp')         ;
+        $this->load->library('Rar')         ;
+        $this->load->helper('path')         ;  
     }
     
     protected function conectar_ftp() {
@@ -62,14 +63,9 @@ $this->hoy = date("Ymd");
      //   echo $archivo."<br>";
         $this->ftp->download($archivo, $path."/".$archivo, 'auto');
         
-        $this->unrar($path, $archivo);
+        $this->rar->unrar($path,$archivo);    
         unlink($path.$archivo);
     }
     
-    protected function unrar($path,$archivo) {
-        $file=$path.$archivo;
-     //   echo $path;
-$string=$this->rar_path.$file.'" "'.$path.'"'; //e "\\199.69.69.93\interfaces_cedentes\Carga DW\Movistar\cobex_prorrogas_SOLVENCIA.rar" "\\199.69.69.93\interfaces_cedentes\Carga DW\Movistar"
-exec($string);
-    }
+    
 }
