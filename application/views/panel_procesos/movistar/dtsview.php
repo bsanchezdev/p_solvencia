@@ -1,0 +1,202 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>MOVISTAR</title>
+        <?= load_bootstrap_css();?>
+    </head>
+    <body>
+        <div class="container" style="padding-bottom: 100px;">
+           
+            
+            <div class="row">
+                
+                <div class="col-lg-12">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+ <h3 class="panel-title"><i class="fa fa-dashboard">&nbsp;</i>CARGA SITREL MOVISTAR</h3>
+        </div>
+        <div class="panel-body">
+            
+            
+        </div>
+            <div class="row container" >
+                
+        <div class="ccol-lg-12">
+        <div class="row">
+                <div class="col-lg-12" style="text-align: center;"><img src="<?= base_url("imagenes/movistar/lgo_movistar_at.png"); ?>" alt="logo-movistar"/></div>
+        </div>    
+        <ul class="list-group">
+            <li class="list-group-item"><a class="btn btn-default form-control" id="init" href="#"><i class="fa fa-gears">&nbsp;</i>Iniciar&nbsp;<i id="Interfaz" class="fa fa-check hidden">&nbsp;</i></a></li>
+        </ul>
+        </div>
+                
+                
+                <div class="col-lg-12 contenedor-datos-ajax">
+                    ...
+                </div>
+            </div>
+        </div>
+                </div>
+                
+              <!-- <input id="testuvm" type="button" value="test uvm" />  -->
+            </div>
+        
+          
+        </div>
+        <footer>
+        <div class="container"> 
+          <?php $this->load->view("footer/footer1.php");?>
+        </div>
+        </footer>
+        <?= load_bootstrap_js();?>
+        
+        <script>
+          $("#init").on("click",function()
+          {
+              var cod='<div id="p2" style="display: none" class="panel panel-default"><div class="panel-heading"></div><div class="outputpaso"></div></div>';
+            $(".contenedor-datos-ajax").html(cod);
+            $("#p2").css("display","block");
+            $(".outputpaso" ).html('<span>&nbsp;Procesando...</span><img style="height: 25px; width: 100px;" src="<?=base_url('/imagenes/6C59C7124.gif');?>" width="100%"/>' );
+           
+              $.ajax({
+  type: "POST",
+  url: "<?= base_url("dts/carga_movistar/Movistar/start");?>/",
+  data: "",
+  success: function(data){
+    //  $("#carbdd").toggleClass("hidden");
+      $( ".contenedor-datos-ajax" ).html( data );
+      var cod='<div id="p2" style="display: none" class="panel panel-default"><div class="panel-heading"></div><div class="outputpaso"></div></div>';
+            $(".contenedor-datos-ajax").append(cod);
+            $("#p2").css("display","block");
+             $(".outputpaso" ).append('<span>&nbsp;Procesando...</span><img style="height: 25px; width: 100px;" src="<?=base_url('/imagenes/6C59C7124.gif');?>" width="100%"/>' );
+           
+   //  normaliza_modal();
+    $("#p2" ).html();$("#p2" ).empty(); $("#p2" ).remove();
+  },
+  error: function(XMLHttpRequest, textStatus, errorThrown) { 
+    $( ".contenedor-datos-ajax" ).append(XMLHttpRequest.responseText)           ; 
+  }
+});
+          });
+        
+       
+        
+        function normaliza_modal()
+        {
+            //$this->db_santander->truncate("base_deuda")    
+   $.ajax({
+  type: "POST",
+  url: "<?= base_url("c_p/uvm_c/normaliza");?>/",
+  data: "",
+  success: function(data){
+   //   $("#carbdd").toggleClass("hidden");
+   $(".outputpaso" ).html();$(".outputpaso" ).empty(); $(".outputpaso" ).remove();
+   $("#p2" ).html();$("#p2" ).empty(); $("#p2" ).remove();
+   
+   
+      $( ".contenedor-datos-ajax" ).append( data );
+     //  $( ".contenedor-datos-ajax" ).html( data );
+      var cod='<div id="p2" style="display: none" class="panel panel-default"><div class="panel-heading"></div><div class="outputpaso"></div></div>';
+           // $(".contenedor-datos-ajax").append(cod);
+            $("#p2").css("display","block");
+            $(".outputpaso" ).append('<span>&nbsp;Procesando...</span><img style="height: 25px; width: 100px;" src="<?=base_url('/imagenes/6C59C7124.gif');?>" width="100%"/>' );
+           
+     
+  },
+  error: function(XMLHttpRequest, textStatus, errorThrown) { 
+    $( ".contenedor-datos-ajax" ).append( XMLHttpRequest.responseText );
+  }
+});                                                      ;
+        }
+        
+        function paso_3()
+        {
+          
+    $.ajax({
+  type: "POST",
+  url: "<?= base_url("c_p/uvm_c/carga_base_sitrel");?>/",
+  data: "",
+  success: function(data){
+   //   $("#carbdd").toggleClass("hidden");
+   $(".outputpaso" ).html();$(".outputpaso" ).empty(); $(".outputpaso" ).remove();
+   $("#p2" ).html();$("#p2" ).empty(); $("#p2" ).remove();
+   
+   
+      $( ".contenedor-datos-ajax" ).append( data );
+     //  $( ".contenedor-datos-ajax" ).html( data );
+      var cod='<div id="p2" style="display: none" class="panel panel-default"><div class="panel-heading"></div><div class="outputpaso"></div></div>';
+           // $(".contenedor-datos-ajax").append(cod);
+            $("#p2").css("display","block");
+             $(".outputpaso" ).append('<span>&nbsp;Procesando...</span><img style="height: 25px; width: 100px;" src="<?=base_url('/imagenes/6C59C7124.gif');?>" width="100%"/>' );
+           
+   //   paso_4();
+  },
+  error: function(XMLHttpRequest, textStatus, errorThrown) { 
+    $( ".contenedor-datos-ajax" ).append( XMLHttpRequest.responseText );
+  }
+}); 
+        }
+        
+        
+         function update_pagos()
+        {
+    /*    var cod='<div id="p2" style="display: none" class="panel panel-default"><div class="panel-heading"></div><div class="outputpaso"></div></div>';
+            $(".contenedor-datos-ajax").html(cod);
+            $("#p2").css("display","block");
+            $(".outputpaso" ).append('<span>&nbsp;Procesando...</span><img style="height: 25px; width: 100px;" src="<?=base_url('/imagenes/6C59C7124.gif');?>" width="100%"/>' );
+        */   
+       $.ajax({
+  type: "POST",
+  url: "<?= base_url("c_p/uvm_c/update_pagos");?>/",
+  data: "",
+  success: function(data){
+   //   $("#carbdd").toggleClass("hidden");
+   $(".outputpaso" ).html();$(".outputpaso" ).empty(); $(".outputpaso" ).remove();
+   $("#p2" ).html();$("#p2" ).empty(); $("#p2" ).remove();
+   
+   
+      $( ".contenedor-datos-ajax" ).append( data );
+     //  $( ".contenedor-datos-ajax" ).html( data );
+      var cod='<div id="p2" style="display: none" class="panel panel-default"><div class="panel-heading"></div><div class="outputpaso"></div></div>';
+           // $(".contenedor-datos-ajax").append(cod);
+            $("#p2").css("display","block");
+             $(".outputpaso" ).append('<span>&nbsp;Procesando...</span><img style="height: 25px; width: 100px;" src="<?=base_url('/imagenes/6C59C7124.gif');?>" width="100%"/>' );
+           
+     
+  },
+  error: function(XMLHttpRequest, textStatus, errorThrown) { 
+    $( ".contenedor-datos-ajax" ).append( XMLHttpRequest.responseText );
+  }
+}); 
+        }
+        
+        function paso_5()
+        {
+            $.ajax({
+  type: "POST",
+  url: "<?= base_url("c_p/santander_c/paso_5");?>/",
+  data: "",
+  success: function(data){
+   //   $("#carbdd").toggleClass("hidden");
+   $(".outputpaso" ).html();$(".outputpaso" ).empty(); $(".outputpaso" ).remove();
+   $("#p2" ).html();$("#p2" ).empty(); $("#p2" ).remove();
+   
+   
+      $( ".contenedor-datos-ajax" ).append( data );
+     //  $( ".contenedor-datos-ajax" ).html( data );
+      var cod='<div id="p2" style="display: none" class="panel panel-default"><div class="panel-heading"></div><div class="outputpaso"></div></div>';
+           // $(".contenedor-datos-ajax").append(cod);
+            $("#p2").css("display","block");
+             $(".outputpaso" ).append('<span>&nbsp;Procesando...</span><img style="height: 25px; width: 100px;" src="<?=base_url('/imagenes/6C59C7124.gif');?>" width="100%"/>' );
+           
+      
+  },
+  error: function(XMLHttpRequest, textStatus, errorThrown) { 
+    $( ".contenedor-datos-ajax" ).append( XMLHttpRequest.responseText );
+  }
+}); 
+            
+        }
+        </script>
+    </body>
+</html>

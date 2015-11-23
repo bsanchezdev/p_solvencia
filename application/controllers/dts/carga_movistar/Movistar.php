@@ -23,6 +23,7 @@ class Movistar extends CI_Controller {
         $this->load->helper('path')         ;  
         $this->load->helper("sql_construct")    ;
         $this->load->model('dts_movistar/data_');
+        $this->data_html="";
         
         
     }
@@ -31,8 +32,10 @@ class Movistar extends CI_Controller {
       return  $this->ftp->connect($this->config_ftp);
     }
    
-    
     public function index() {
+        $this->load->view("panel_procesos/movistar/dtsview");
+    }
+    public function start() {
   
 $this->hoy = date("Ymd"); 
      // var_dump(get_loaded_extensions());
@@ -81,8 +84,13 @@ $this->hoy = date("Ymd");
            
            $r=$listado[$key];
          $this->data[$r["name"]]=  load_file($r["server_path"],null,"dia");
-         echo $r["server_path"]."<br>";
+         $regs=count($this->data[$r["name"]])-1;
+         $this->data_html.='<li class="list-group-item">'.$r["server_path"]." -> ".$regs.' <span class="badge">OK</span></li>'      ;
+   
+        
        } 
+       $data["data_html"]=$this->data_html    ;
+       $this->load->view("proc_1",$data);
     }
     
     
