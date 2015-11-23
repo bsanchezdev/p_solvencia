@@ -16,7 +16,7 @@ class Financoop_interfaz_v2 extends CI_Controller{
         parent::__construct();
         $this->load->helper("file");
         $this->load->helper("caracteres");
-                 $this->load->helper("sql_construct");
+        $this->load->helper("sql_construct");
         $this->load->model("financoop/financoop");
         ini_set('max_execution_time', -1);
     }

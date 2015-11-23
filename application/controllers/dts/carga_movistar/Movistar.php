@@ -13,12 +13,18 @@
  */
 class Movistar extends CI_Controller {
    var $config_ftp=array();
-   var $rar_path='C:\"Archivos de programa"\WinRAR\Rar.exe x -o+ "';
+   //var $rar_path='C:\"Archivos de programa"\WinRAR\Rar.exe x -o+ "';
     public function __construct() {
         parent::__construct()               ;
+        $this->load->helper("file")         ;
+        $this->load->helper("caracteres")   ;
         $this->load->library('ftp')         ;
         $this->load->library('Rar')         ;
         $this->load->helper('path')         ;  
+        $this->load->helper("sql_construct")    ;
+        $this->load->model('dts_movistar/data_');
+        
+        
     }
     
     protected function conectar_ftp() {
@@ -51,8 +57,10 @@ $this->hoy = date("Ymd");
                         {
                             
                            $this->download($dir, $archivo);
+                          
                         }
                 endif;
+                $this->data_->save($this->data);
        else:
            echo "Error al conectar al servidor ".$this->config_ftp['hostname'];
        endif;
@@ -65,6 +73,16 @@ $this->hoy = date("Ymd");
         
         $this->rar->unrar($path,$archivo);    
         unlink($path.$archivo);
+        
+          
+          $listado=get_dir_file_info($path);
+	 
+       foreach ($listado as $key => $value) {
+           
+           $r=$listado[$key];
+         $this->data[$r["name"]]=  load_file($r["server_path"],null,"dia");
+         echo $r["server_path"]."<br>";
+       } 
     }
     
     
