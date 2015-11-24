@@ -54,6 +54,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['solvencia'] = "curso"; 
-$route['pruebaderuteo/(:any)/(:any)']= 'controlador_1/ejemplo_1/$1/$2';
+$route['panel/dts/']= 'panel/dts/carga_movistar/Movistar/';
 $route['pruebaderuteo2/(:any)/(:any)']= 'controlador_1/ejemplo_1/ParamEstatico1/ParamEstatico2';
 $route['pruebaderuteo2']= 'controlador_1/ejemplo_1/ParamEstatico1/ParamEstatico2';

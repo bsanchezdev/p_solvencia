@@ -5,6 +5,7 @@
         <?= load_bootstrap_css();?>
     </head>
     <body>
+        <link rel="stylesheet" href="<?= base_url("css");?>/icono.min.css"> 
         <div class="container" style="padding-bottom: 100px;">
            
             

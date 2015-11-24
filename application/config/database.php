@@ -218,7 +218,7 @@ $db['uvm'] = array(
 );
 
 
-$db['movistar'] = array(
+$db['c'] = array(
 	'dsn'	=> '',
 	'hostname' => 'naboo',
 	'username' => 'desarrollo',
@@ -239,3 +239,20 @@ $db['movistar'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+$db['movistar']['hostname'] = 'Driver={SQL Server Native Client 10.0};Server=Saturno;Database=CEDENTES;'; //naboo test
+$db['movistar']['username'] = 'sa';
+$db['movistar']['password'] = 'One2Three';
+$db['movistar']['database'] = 'CNB';
+$db['movistar']['dbdriver'] = 'odbc';
+$db['movistar']['dbprefix'] = '';
+$db['movistar']['pconnect'] = FALSE;
+$db['movistar']['db_debug'] = TRUE;
+$db['movistar']['cache_on'] = FALSE;
+$db['movistar']['cachedir'] = '';
+$db['movistar']['char_set'] = 'utf8';
+$db['movistar']['dbcollat'] = 'utf8_general_ci';
+$db['movistar']['swap_pre'] = '';
+$db['movistar']['autoinit'] = TRUE;
+$db['movistar']['stricton'] = FALSE;
+$db['movistar']['schema']   = "dbo";

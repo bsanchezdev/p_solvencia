@@ -16,6 +16,10 @@ class Movistar extends CI_Controller {
    //var $rar_path='C:\"Archivos de programa"\WinRAR\Rar.exe x -o+ "';
     public function __construct() {
         parent::__construct()               ;
+        
+        $this->load->helper('url');
+       
+       // var_dump($this);
         $this->load->helper("file")         ;
         $this->load->helper("caracteres")   ;
         $this->load->library('ftp')         ;
@@ -24,7 +28,9 @@ class Movistar extends CI_Controller {
         $this->load->helper("sql_construct")    ;
         $this->load->model('dts_movistar/data_');
         $this->data_html="";
-        
+      //  $this->db = $this->load->database('movistar', TRUE);
+     
+       // $this->u_crud->init($db);
         
     }
     
@@ -33,7 +39,16 @@ class Movistar extends CI_Controller {
     }
    
     public function index() {
+       //  $crud = new grocery_CRUD();
+              //   $crud->set_model('G_model');
+         //       $crud->set_table('empex_abonado_');
+         //       $crud->columns('ORIGEN','NUM_IDENT');
+  
+    //$output = $crud->render();
+ 
+    //$this->_example_output($output);
         $this->load->view("panel_procesos/movistar/dtsview");
+    //   $this->data_->load();
     }
     public function start() {
   
@@ -63,7 +78,13 @@ $this->hoy = date("Ymd");
                           
                         }
                 endif;
+                $data["data_html"]=$this->data_html      ;
+       $this->load->view("proc_1",$data)        ;
                 $this->data_->save($this->data);
+                
+                 $this->db_movistar = $this->load->database('movistar', TRUE);
+               
+                
        else:
            echo "Error al conectar al servidor ".$this->config_ftp['hostname'];
        endif;
@@ -85,13 +106,19 @@ $this->hoy = date("Ymd");
            $r=$listado[$key];
          $this->data[$r["name"]]=  load_file($r["server_path"],null,"dia");
          $regs=count($this->data[$r["name"]])-1;
-         $this->data_html.='<li class="list-group-item">'.$r["server_path"]." -> ".$regs.' <span class="badge">OK</span></li>'      ;
+         $this->data_html.='<li class="list-group-item">'.$r["server_path"]." -> ".$regs.' <span class="badge">OK</span><i class="icono-check"></i></li>'      ;
    
         
        } 
-       $data["data_html"]=$this->data_html    ;
-       $this->load->view("proc_1",$data);
+        $this->data_html.='<li class="list-group-item"> Datos guardados en BD <i class="icono-check"></i></li>'      ;
+   
+       
     }
     
+    public function _example_output($output = null)
+	{
+		$this->load->view('example.php',$output);
+	}
+
     
 }

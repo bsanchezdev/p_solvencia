@@ -16,6 +16,13 @@ class data_ extends CI_Model{
         parent::__construct();
         $this->db_movistar = $this->load->database('movistar', TRUE);
         $this->model_path=APPPATH."models";
+        
+        $db =   array('db' => $this->db_movistar);
+        $this->load->library('U_Crud')  ;
+        $this->u_crud->init("movistar");
+       // $this->u_crud->setobj($this);
+         $this->u_crud->tabla("empex_abonado_");
+        $this->u_crud->columnas();
     }
     
     public function s($param) {
