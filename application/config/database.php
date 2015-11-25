@@ -218,7 +218,7 @@ $db['uvm'] = array(
 );
 
 
-$db['c'] = array(
+$db['mysql_movistar'] = array(
 	'dsn'	=> '',
 	'hostname' => 'naboo',
 	'username' => 'desarrollo',

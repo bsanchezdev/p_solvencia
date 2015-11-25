@@ -7,21 +7,16 @@
  */
 
 /**
- * Description of curso
+ * Description of MY_urnusdev
  *
  * @author Desarrollo
  */
-class Panel extends CI_Controller {
-
+class MY_urnusdev extends CI_Controller{
     public function __construct() {
         parent::__construct();
     }
     
-    public function index($param=null)
-    {
-        $data   =   null;
-      $this->load->view("landing",$data);
-    //  $this->init_udev("");
+    public function init_udev($param=null) {
+        echo $param."<!-- Urnusdev -->";
     }
-    
 }
