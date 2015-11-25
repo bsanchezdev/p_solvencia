@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <title><?= $title;?> - Paginación Codeigniter 3</title>
      <?= load_bootstrap_css() ?>
+     <?= load_bootstrap_js() ?>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.js"></script>
 </head>
 <body>
     
@@ -11,7 +15,8 @@
        
     <div class="row">
         <div class="col-xs-12 table-responsive">
-    <table class="table table-striped table-condensed ">
+    <table id="<?= $id_tab ?>" class="table table-striped table-condensed display">
+    <thead>
     <?php
     if($data_tabla)
     {
@@ -21,11 +26,13 @@
     <th> <?= $value; ?> </th>     
     <?php } ?>     
     </tr>
+    </thead>
+    <tbody>
     <?php
-    foreach ($data_tabla as $k => $v){ ?>
-    <tr>
-    <?php foreach ($v as $key => $value) { ?>
-         <td><?= $value ?></td>
+    foreach ($data_tabla as $k => $v){ $count++?>
+    <tr id="<?php echo $count ;?>">
+    <?php foreach ($v as $key => $value) {  ?>
+    <td><?= $value ?></td>
     <?php } ?>
     </tr>
     <?php
@@ -33,10 +40,50 @@
     
     }
     ?>
+    </tbody>
     </table>
         </div>
     </div>
     <?= $this->pagination->create_links() ?>
     </div>
+    <script>
+        $(document).ready( function () {
+    var selected = [];        
+            
+            
+    $('#<?= $id_tab?>').DataTable(
+            {
+    paging: false,
+    searching: true,
+    ordering:  false,
+    select: true,
+    //"processing": true,
+    //    "serverSide": true,
+    //    "ajax": "scripts/ids-arrays.php",
+        "rowCallback": function( row, data ) {
+            if ( $.inArray(data.DT_RowId, selected) !== -1 ) {
+                $(row).addClass('selected');
+            }
+        }
+}
+            );
+    
+    
+    
+     $('#<?= $id_tab?> tbody').on('click', 'tr', function () {
+        var id = this.id;
+        var index = $.inArray(id, selected);
+ 
+        if ( index === -1 ) {
+            selected.push( id );
+        } else {
+            selected.splice( index, 1 );
+        }
+ 
+        $(this).toggleClass('selected');
+       // alert(id);
+    } );
+} );
+    </script>
 </body>
 </html>
