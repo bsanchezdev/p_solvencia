@@ -80,4 +80,27 @@ class U_Crud  extends CI_Model{
                     return $data;
             }
 	}
+        
+        
+        public function show($titulo="U_Crud Show Tabla",$paginas=10,$links=10,$segment=4)
+        {
+            $data['title'] = $titulo;
+		$pages=$paginas; //Número de registros mostrados por páginas
+		$this->load->library('pagination'); //Cargamos la librería de paginación
+		$config['base_url'] = base_url().'crud/A/pag/'; // parametro base de la aplicación, si tenemos un .htaccess nos evitamos el index.php
+		$config['total_rows'] = $this->filas();//calcula el número de filas  
+		$config['per_page'] = $pages; //Número de registros mostrados por páginas
+        $config['num_links'] = $links; //Número de links mostrados en la paginación
+ 		$config['first_link'] = 'Primera';//primer link
+		$config['last_link'] = 'Última';//último link
+        $config["uri_segment"] = $segment;//el segmento de la paginación
+		$config['next_link'] = 'Siguiente';//siguiente link
+		$config['prev_link'] = 'Anterior';//anterior link
+		$this->pagination->initialize($config); //inicializamos la paginación		
+		$data["data_tabla"] = $this->total_paginados($config['per_page'],$this->uri->segment($segment));			
+                $data['columnas'] = $this->get_columnas();
+                //cargamos la vista y el array data
+               // var_dump($this->u_crud->use_db->last_query());
+		$this->CI->load->view('U_crud/show_tabla', $data);
+        }
    }
