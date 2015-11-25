@@ -19,11 +19,12 @@ class U_Crud  extends CI_Model{
     var $obj=null;
     var $use_db=null;
     public function __construct() {
-        
+        $this->CI = get_instance()                                            ;
+        $this->CI->load->helper("bootstrap");
     }
    public function init($database=null) {
        //phpinfo();
-        $this->CI = get_instance()                                            ;
+        
         $this->db[$database]= $this->CI->load->database($database, TRUE);
         if($this->db[$database]!=null):
        // $this->db=$database                                                 ;
@@ -82,7 +83,7 @@ class U_Crud  extends CI_Model{
 	}
         
         
-        public function show($titulo="U_Crud Show Tabla",$paginas=10,$links=10,$segment=4)
+        public function show($titulo="U_Crud Show Tabla",$paginas=5,$links=10,$segment=4)
         {
             $data['title'] = $titulo;
 		$pages=$paginas; //Número de registros mostrados por páginas

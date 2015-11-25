@@ -28,12 +28,17 @@ class A extends CI_Controller{
     public function pag($pag=0) {
        
  //var_dump($this->uri->segment(4));
-      $this->u_crud
+  /*    $this->u_crud
            ->use_db("mysql_movistar")
-           ->tabla("empex_abonado_")->show();
-     
-   /*  $cols2 =  $this->u_crud->use_db("movistar")
-              ->tabla("[BANCO_SANTANDER_ASIGNACION]")->get_columnas();*/
+           ->tabla("empex_abonado_")
+           ->show();
+  */   
+        $this->u_crud
+           ->use_db("mysql_movistar")
+           ->tabla("empex_documento_")
+           ->show();
+    
+      
      
 		
     }
