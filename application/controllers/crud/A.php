@@ -71,10 +71,10 @@ class A extends CI_Controller{
 		$config['next_link'] = 'Siguiente';//siguiente link
 		$config['prev_link'] = 'Anterior';//anterior link
 		$this->pagination->initialize($config); //inicializamos la paginación		
-		$data["provincias"] = $this->u_crud->total_paginados($config['per_page'],$this->uri->segment(4));			
-              
+		$data["data_tabla"] = $this->u_crud->total_paginados($config['per_page'],$this->uri->segment(4));			
+                $data['columnas'] = $this->u_crud->get_columnas();
                 //cargamos la vista y el array data
-                var_dump($this->u_crud->use_db->last_query());
+               // var_dump($this->u_crud->use_db->last_query());
 		$this->load->view('U_crud/index', $data);
     }
     

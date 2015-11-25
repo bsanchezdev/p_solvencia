@@ -9,23 +9,39 @@
     <table class="table table-striped">
     <?php
     //  var_dump($provincias);
-    if($provincias)
+    if($data_tabla)
     {
     ?>
         <tr>
-            <th>
-                Provincia
-            </th>
+            <?php
+        foreach ($columnas as $key => $value) { ?>
+       <th>
+                <?= $value; ?>
+            </th>     
+      <?php
+      }
+            ?>
+            
         </tr>
         <?php
     
-        foreach ($provincias as $k => $v)
+        foreach ($data_tabla as $k => $v)
         {
         ?>
             <tr>
-                <td>
-                    <?php var_dump($v) ;?>
-                </td>
+                
+                    <?php 
+                    foreach ($v as $key => $value) {
+                        ?>
+                    <td>
+                            <?php
+                         echo $value ;
+                         ?>
+                    </td>
+                    <?php
+                    }?>
+                   
+                
             </tr>
         <?php
         }
