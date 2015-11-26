@@ -51,12 +51,32 @@
     var selected = [];        
             
             
-    $('#<?= $id_tab?>').DataTable(
+    $('#<?= $id_tab?>9').DataTable(
             {
     paging: false,
     searching: true,
-    ordering:  false,
-    select: true,
+    ordering:  true,
+    select: true, 
+    info:     true,
+    "columnDefs": [
+            {
+                "targets": [ 3 ],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [ 4 ],
+                "visible": false
+            },
+            {
+                "targets": [ 5 ],
+                "visible": false
+            },
+            {
+                "targets": [ 6 ],
+                "visible": false
+            }
+        ],
     //"processing": true,
     //    "serverSide": true,
     //    "ajax": "scripts/ids-arrays.php",

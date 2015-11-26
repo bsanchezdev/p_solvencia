@@ -14,33 +14,30 @@
 class A extends CI_Controller{
     public function __construct() {
         parent::__construct();
+        
         $this->load->library("u_crud");
-        
-        
-                $this->u_crud->init("movistar")
-                        ->init("mysql_movistar");
+                $this->u_crud
+                     ->init("ripley_sitrel");
     }
     
-    public function index($a=0) {
-        $this->pag($a);
+    public function index() {
+        $this->pag();
     }
     
-    public function pag($pag=0) {
-       
- //var_dump($this->uri->segment(4));
-  /*    $this->u_crud
-           ->use_db("mysql_movistar")
-           ->tabla("empex_abonado_")
-           ->show();
-  */   
+    public function pag() {
+        
+        /*$this->u_crud
+           ->use_db("ripley_sitrel")
+           ->tabla("banco_ripley_carga")
+           ->show();*/
+     //    $configx['base_url']       = base_url()."fuckyeah"  ; // parametro base de la aplicación, si tenemos un .htaccess nos evitamos el index.php
+	// $configx['total_rows']     = 12        ;//calcula el número de filas  
+     //    $configx['per_page']       = 6               ; 
         $this->u_crud
-           ->use_db("mysql_movistar")
-           ->tabla("empex_documento_")
+           ->use_db("ripley_sitrel")
+           ->query("select RUT,DV,NOMBRE from banco_ripley_carga")
+          // ->set_config_pag()
            ->show();
-    
-      
-     
-		
-    }
+        }
     
 }
