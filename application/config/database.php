@@ -256,3 +256,20 @@ $db['movistar']['swap_pre'] = '';
 $db['movistar']['autoinit'] = TRUE;
 $db['movistar']['stricton'] = FALSE;
 $db['movistar']['schema']   = "dbo";
+
+$db['BI']['hostname'] = 'Driver={SQL Server Native Client 10.0};Server=Saturno;Database=BI;'; /*desarrollo naboo*/
+$db['BI']['username'] = 'sa';
+$db['BI']['password'] = 'One2Three';
+$db['BI']['database'] = 'BI';
+$db['BI']['dbdriver'] = 'odbc';
+$db['BI']['dbprefix'] = '';
+$db['BI']['pconnect'] = FALSE;
+$db['BI']['db_debug'] = TRUE;
+$db['BI']['cache_on'] = FALSE;
+$db['BI']['cachedir'] = '';
+$db['BI']['char_set'] = 'utf8';
+$db['BI']['dbcollat'] = 'utf8_general_ci';
+$db['BI']['swap_pre'] = '';
+$db['BI']['autoinit'] = TRUE;
+$db['BI']['stricton'] = FALSE;
+$db['BI']['schema']   = "dbo";
